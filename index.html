@@ -1,0 +1,242 @@
+ <!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kozybaev Shop</title>
+  <link rel="stylesheet" href="resources/axure.css">
+  <script src="resources/axure.js" defer></script>
+  <style>
+    body {
+      background-color: white;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+    .container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding: 20px;
+    }
+    .product {
+      background: #f9f9f9;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+    .product img {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 15px;
+    }
+    .btn {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    .btn:hover {
+      background-color: #0056b3;
+    }
+    .cart {
+      margin-top: 20px;
+      padding: 15px;
+      background: #f1f1f1;
+      border-radius: 10px;
+      display: inline-block;
+    }
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      padding: 20px;
+      max-width: 400px;
+      margin: 0 auto;
+      background: #f9f9f9;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 5px 0;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+    }
+    footer {
+      background-color: #f9f9f9;
+      padding: 10px;
+      text-align: center;
+      font-size: 14px;
+      color: #666;
+      margin-top: 20px;
+    }
+  
+    #header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      padding: 20px 0;
+    }
+ 
+    #header img {
+      width: 120px;
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="header" class="ax_default">
+    <img src="resources/logo.png" alt="Логотип">
+    <h1>Kozybaev Shop</h1>
+  </div>
+
+  <div id="menu" class="ax_default">
+    <a href="#" onclick="showPage('home')">Главная</a>
+    <a href="#" onclick="showPage('about')">О нас</a>
+    <a href="#" onclick="showPage('contact')">Контакты</a>
+  </div>
+
+ 
+  <div id="home" class="page ax_default">
+    <div class="container">
+      <div class="product" data-category="tshirt">
+        <img src="resources/tshirt.webp" alt="Футболка">
+        <h3>Футболка</h3>
+        <p>Цена: 1200₸</p>
+        <button class="btn" onclick="addToCart('Футболка', 1200)">Купить</button>
+      </div>
+      <div class="product" data-category="jeans">
+        <img src="resources/jeans.webp" alt="Джинсы">
+        <h3>Джинсы</h3>
+        <p>Цена: 2500₸</p>
+        <button class="btn" onclick="addToCart('Джинсы', 2500)">Купить</button>
+      </div>
+      <div class="product" data-category="shoes">
+        <img src="resources/shoes.webp" alt="Кроссовки">
+        <h3>Кроссовки</h3>
+        <p>Цена: 4500₸</p>
+        <button class="btn" onclick="addToCart('Кроссовки', 4500)">Купить</button>
+      </div>
+      <div class="product" data-category="hoodie">
+        <img src="resources/hoodie.webp" alt="Худи">
+        <h3>Худи</h3>
+        <p>Цена: 2200₸</p>
+        <button class="btn" onclick="addToCart('Худи', 2200)">Купить</button>
+      </div>
+      <div class="product" data-category="trousers">
+        <img src="resources/Tights.webp" alt="Трико">
+        <h3>Трико</h3>
+        <p>Цена: 1800₸</p>
+        <button class="btn" onclick="addToCart('Трико', 1800)">Купить</button>
+      </div>
+      <div class="product" data-category="shorts">
+        <img src="resources/shorts.webp" alt="Шорты">
+        <h3>Шорты</h3>
+        <p>Цена: 1500₸</p>
+        <button class="btn" onclick="addToCart('Шорты', 1500)">Купить</button>
+      </div>
+    </div>
+    <div class="cart">
+      <h2>🛒 Корзина</h2>
+      <ul class="cart-items" id="cart-items"></ul>
+      <p><strong>Общая сумма: <span id="total-price">0</span>₸</strong></p>
+      <button class="btn" onclick="clearCart()">Очистить корзину</button>
+    </div>
+  </div>
+
+
+  <div id="about" class="page content ax_default">
+    <h2>О нас</h2>
+    <p>Мы предлагаем качественную одежду по доступным ценам. Добро пожаловать!</p>
+    <p>Чтобы оформить заказ или задать вопрос, отправьте сообщение через нашу форму в разделе "Контакты".</p>
+    
+    <div class="admin-profile" style="margin-top: 20px;">
+      <img src="resources/admin.webp" alt="Администратор магазина" style="width: 150px; height: 150px; object-fit: cover; border-radius: 50%;">
+      <h3>Администратор магазина: Михайлов Арсен</h3>
+      <p><strong>Контакт:</strong> 87078535828</p>
+    </div>
+  </div>
+
+  
+  <div id="contact" class="page content ax_default">
+    <h2>Контакты</h2>
+    <div class="contact-form">
+      <form>
+        <input type="text" placeholder="Ваше имя" required>
+        <input type="email" placeholder="Ваш Email" required>
+        <textarea placeholder="Ваше сообщение" required></textarea>
+        <button class="btn" type="submit">Отправить</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="error404" class="page error ax_default">
+    <h2>Ошибка 404</h2>
+    <p>Страница не найдена!</p>
+  </div>
+
+  <footer>
+    <p>Все права защищены © 2025 год Kozybaev University</p>
+  </footer>
+
+  <script>
+  
+    function showPage(page) {
+      document.querySelectorAll(".page").forEach(p => p.style.display = "none");
+      const pageElement = document.getElementById(page);
+      if (pageElement) {
+        pageElement.style.display = "block";
+      } else {
+        console.error("Страница не найдена: " + page);
+        // Показываем страницу 404 при ошибке
+        const errorPage = document.getElementById('error404');
+        if (errorPage) errorPage.style.display = "block";
+      }
+    }
+
+
+    document.addEventListener('DOMContentLoaded', () => {
+      showPage('home');
+    });
+
+
+    let cartItems = [];
+
+    function addToCart(productName, productPrice) {
+      cartItems.push({ name: productName, price: productPrice });
+      updateCart();
+    }
+
+    function updateCart() {
+      const cartList = document.getElementById('cart-items');
+      cartList.innerHTML = '';
+      let total = 0;
+      cartItems.forEach(item => {
+        total += item.price;
+        const li = document.createElement('li');
+        li.textContent = ${item.name} - ${item.price}₸;
+        cartList.appendChild(li);
+      });
+      document.getElementById('total-price').textContent = total;
+    }
+
+    function clearCart() {
+      cartItems = [];
+      updateCart();
+    }
+  </script>
+
+</body>
+</html>
