@@ -1,0 +1,25 @@
+
+<?xml version="1.0" encoding="UTF-8"?>
+<axure>
+    <project name="Kozybaev Shop">
+        <page name="Главная">
+            <widget type="text" value="Добро пожаловать в Kozybaev Shop!" x="50" y="50"/>
+            <widget type="button" value="Перейти в каталог" x="50" y="100"/>
+        </page>
+        <page name="Каталог">
+            <widget type="text" value="Наши товары:" x="50" y="50"/>
+            <widget type="image" src="resources/tshirt.webp" x="50" y="100"/>
+            <widget type="button" value="Купить футболку" x="50" y="250"/>
+        </page>
+        <page name="Корзина">
+            <widget type="text" value="Ваша корзина:" x="50" y="50"/>
+            <widget type="button" value="Очистить корзину" x="50" y="100"/>
+        </page>
+        <page name="Контакты">
+            <widget type="text" value="Свяжитесь с нами:" x="50" y="50"/>
+            <widget type="input" placeholder="Ваше имя" x="50" y="100"/>
+            <widget type="input" placeholder="Ваш email" x="50" y="150"/>
+            <widget type="button" value="Отправить" x="50" y="200"/>
+        </page>
+    </project>
+</axure>
